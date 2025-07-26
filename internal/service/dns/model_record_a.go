@@ -179,7 +179,6 @@ var RecordAResourceSchemaAttributes = map[string]schema.Attribute{
 		CustomType:          iptypes.IPv4AddressType{},
 		Optional:            true,
 		Computed:            true,
-		Default:             stringdefault.StaticString(""),
 		MarkdownDescription: "The IPv4 Address of the record.",
 	},
 	"last_queried": schema.Int64Attribute{
