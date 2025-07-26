@@ -41,6 +41,14 @@ var ZoneForwardForwardToAttrTypes = map[string]attr.Type{
 
 var ZoneForwardForwardToResourceSchemaAttributes = map[string]schema.Attribute{
 	"address": schema.StringAttribute{
+		Optional: true,
+		Computed: true,
+		Validators: []validator.String{
+			stringvalidator.RegexMatches(
+				regexp.MustCompile(`^[^\s].*[^\s]$`),
+				"Should not have leading or trailing whitespace",
+			),
+		},
 		Required: true,
 		Validators: []validator.String{
 			stringvalidator.RegexMatches(
@@ -82,8 +90,12 @@ var ZoneForwardForwardToResourceSchemaAttributes = map[string]schema.Attribute{
 		MarkdownDescription: "A generated TSIG key.",
 	},
 	"tsig_key_alg": schema.StringAttribute{
-		Optional:            true,
-		Computed:            true,
+		Optional: true,
+		Computed: true,
+		Validators: []validator.String{
+			stringvalidator.OneOf("HMAC-MD5", "HMAC-SHA256"),
+		},
+		Default:             stringdefault.StaticString("HMAC-MD5"),
 		MarkdownDescription: "The TSIG key algorithm.",
 	},
 	"tsig_key_name": schema.StringAttribute{

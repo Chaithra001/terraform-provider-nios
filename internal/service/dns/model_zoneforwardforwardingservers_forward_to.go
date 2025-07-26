@@ -82,19 +82,17 @@ var ZoneforwardforwardingserversForwardToResourceSchemaAttributes = map[string]s
 		MarkdownDescription: "A generated TSIG key.",
 	},
 	"tsig_key_alg": schema.StringAttribute{
-		Optional:            true,
-		Computed:            true,
+		Optional: true,
+		Computed: true,
+		Default:  stringdefault.StaticString("HMAC-MD5"),
+		Validators: []validator.String{
+			stringvalidator.OneOf("HMAC-MD5", "HMAC-SHA256"),
+		},
 		MarkdownDescription: "The TSIG key algorithm.",
 	},
 	"tsig_key_name": schema.StringAttribute{
-		Optional: true,
-		Computed: true,
-		Validators: []validator.String{
-			stringvalidator.RegexMatches(
-				regexp.MustCompile(`^[^\s].*[^\s]$`),
-				"prefix should not have leading or trailing whitespace",
-			),
-		},
+		Optional:            true,
+		Computed:            true,
 		MarkdownDescription: "The TSIG key name.",
 	},
 	"use_tsig_key_name": schema.BoolAttribute{
