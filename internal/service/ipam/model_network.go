@@ -20,7 +20,13 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64default"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listdefault"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/mapdefault"
+<<<<<<< HEAD
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
+=======
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
+>>>>>>> e8da8873 (Added support for network object (#44))
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 
@@ -289,7 +295,14 @@ var NetworkAttrTypes = map[string]attr.Type{
 
 var NetworkResourceSchemaAttributes = map[string]schema.Attribute{
 	"ref": schema.StringAttribute{
+<<<<<<< HEAD
 		Computed:            true,
+=======
+		Computed: true,
+		PlanModifiers: []planmodifier.String{
+			stringplanmodifier.UseStateForUnknown(),
+		},
+>>>>>>> e8da8873 (Added support for network object (#44))
 		MarkdownDescription: "The reference to the object.",
 	},
 	"authority": schema.BoolAttribute{
@@ -1314,6 +1327,11 @@ func (m *NetworkModel) Flatten(ctx context.Context, from *ipam.Network, diags *d
 	m.EnableDiscovery = types.BoolPointerValue(from.EnableDiscovery)
 	m.EnableEmailWarnings = types.BoolPointerValue(from.EnableEmailWarnings)
 	m.EnableIfmapPublishing = types.BoolPointerValue(from.EnableIfmapPublishing)
+<<<<<<< HEAD
+	m.EnableImmediateDiscovery = types.BoolPointerValue(from.EnableImmediateDiscovery)
+=======
+	// m.EnableImmediateDiscovery = types.BoolPointerValue(from.EnableImmediateDiscovery)
+>>>>>>> e8da8873 (Added support for network object (#44))
 	m.EnablePxeLeaseTime = types.BoolPointerValue(from.EnablePxeLeaseTime)
 	m.EnableSnmpWarnings = types.BoolPointerValue(from.EnableSnmpWarnings)
 	m.EndpointSources = flex.FlattenFrameworkListString(ctx, from.EndpointSources, diags)

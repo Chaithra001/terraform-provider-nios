@@ -104,10 +104,13 @@ func (p *NIOSProvider) Resources(_ context.Context) []func() resource.Resource {
 		dns.NewZoneDelegatedResource,
 		dns.NewZoneAuthResource,
 		dns.NewViewResource,
+<<<<<<< HEAD
 
 		dhcp.NewFixedaddressResource,
 		dhcp.NewSharednetworkResource,
 		dhcp.NewRangetemplateResource,
+=======
+>>>>>>> e8da8873 (Added support for network object (#44))
 
 		dtc.NewDtcLbdnResource,
 		dtc.NewDtcServerResource,
@@ -117,7 +120,12 @@ func (p *NIOSProvider) Resources(_ context.Context) []func() resource.Resource {
 		ipam.NewNetworkcontainerResource,
 		ipam.NewIpv6networkcontainerResource,
 		ipam.NewIpv6networkResource,
+<<<<<<< HEAD
 		ipam.NewNetworkviewResource,
+=======
+    
+    dhcp.NewSharednetworkResource,
+>>>>>>> e8da8873 (Added support for network object (#44))
 	}
 }
 
@@ -147,11 +155,21 @@ func (p *NIOSProvider) DataSources(ctx context.Context) []func() datasource.Data
 		dtc.NewDtcServerDataSource,
 		dtc.NewDtcPoolDataSource,
 
+<<<<<<< HEAD
+		dhcp.NewSharednetworkDataSource,
+		dhcp.NewFixedaddressDataSource,
+
 		ipam.NewNetworkDataSource,
 		ipam.NewNetworkcontainerDataSource,
 		ipam.NewIpv6networkcontainerDataSource,
 		ipam.NewIpv6networkDataSource,
 		ipam.NewNetworkviewDataSource,
+=======
+		ipam.NewNetworkDataSource,
+    ipam.NewNetworkcontainerDataSource,
+
+		dhcp.NewSharednetworkDataSource,		
+>>>>>>> e8da8873 (Added support for network object (#44))
 	}
 }
 
